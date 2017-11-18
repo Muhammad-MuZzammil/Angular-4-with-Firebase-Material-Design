@@ -1,3 +1,50 @@
-<p>
-  edit-book works!
-</p>
+<mat-card>Edit Book</mat-card>
+
+<div class="edit-book-form">
+  <a [routerLink]="['/books']">Back</a>
+  <form #value="ngForm" (submit)="submitEdit()">
+
+    <mat-input-container class="full-width">
+      <input matInput [(ngModel)]="title" placeholder="Book Title" name="title">
+    </mat-input-container>
+
+    <mat-input-container class="full-width">
+      <input matInput placeholder="Book Author" name="author" [(ngModel)]="author">
+    </mat-input-container>
+
+    <mat-input-container class="full-width">
+      <input matInput placeholder="Book Price" type="number" [(ngModel)]="price" name="price">
+    </mat-input-container>
+
+
+
+
+    <mat-input-container class="full-width">
+      <input matInput [matDatepicker]="dateadded" placeholder="Date Added">
+      <mat-datepicker-toggle matSuffix [for]="dateadded"></mat-datepicker-toggle>
+    </mat-input-container>
+    <mat-datepicker #dateadded (selectedChanged)="updateDateAdded($event)"></mat-datepicker>
+
+    <mat-input-container class="full-width">
+      <input matInput [matDatepicker]="dateread" placeholder="Date Read">
+      <mat-datepicker-toggle matSuffix [for]="dateread"></mat-datepicker-toggle>
+    </mat-input-container>
+    <mat-datepicker #dateread (selectedChanged)="updateDateRead($event)"></mat-datepicker>
+
+    <mat-input-container class="full-width">
+      <textarea matInput rows="5" placeholder="Book Description" [(ngModel)]="description" name="description"></textarea>
+    </mat-input-container>
+
+    <mat-input-container class="full-width">
+      <input matInput type="number" placeholder="Book Rate (1-5)" min="1" max="5" step="0.1" [(ngModel)]="rate" name="rate">
+    </mat-input-container>
+
+    <mat-input-container class="third-width">
+      <input matInput placeholder="Image Url (enter image URL)" [(ngModel)]="imageUrl" name="imageUrl">
+    </mat-input-container>
+    <img src="{{imageUrl}}" alt="{{title}}">
+    <hr>
+
+    <button mat-raised-button value="submit">Save Changes </button>
+  </form>
+</div>

@@ -33,4 +33,23 @@ export class FirebaseService {
     this.bookDetails = this.afDB.object('/books/' + id) as Observable<any>;
     return this.bookDetails;
   }
+  addBook(bookDetails) {
+    let filteredBook = JSON.parse(JSON.stringify(bookDetails)) //remove the undefined fiels
+    return this.books.push(filteredBook);
+  }
+  updateBook(id, bookDetails) {
+    let filteredBook = JSON.parse(JSON.stringify(bookDetails)); //remove the undefined fiels
+    console.log("filteredBook", filteredBook)
+    return this.books.update(id, filteredBook);
+  }
+  deleteBook(id) {
+    return this.books.remove(id)
+  }
+  formatDate(date: Date): string {
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    return `${year}-${month}-${day}`
+  }
+
 }

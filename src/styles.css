@@ -35,7 +35,7 @@ td{ padding-right: 50px; }
 .third-width{ width: 75%; }
 .quarter-width{ width: 25%; }
 
-md-grid-tile{
+mat-grid-tile{
     box-shadow: 10px 10px 5px #888888;
     margin: 1em auto;
 }
